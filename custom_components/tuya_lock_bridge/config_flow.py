@@ -16,12 +16,10 @@ from .const import (
     CONF_ACCESS_SECRET,
     CONF_ENDPOINT,
     CONF_LOCKS,
-    CONF_OPEN_SECONDS,
     CONF_PUSH,
     CONF_PUSH_ENV,
     CONF_REFRESH_MINUTES,
     CONF_SUBSCRIPTION_END,
-    DEFAULT_OPEN_SECONDS,
     DEFAULT_REFRESH_MINUTES,
     DOMAIN,
     ENDPOINTS,
@@ -154,11 +152,6 @@ class OptionsFlow(config_entries.OptionsFlow):
                     CONF_REFRESH_MINUTES, default=entry.options.get(CONF_REFRESH_MINUTES, DEFAULT_REFRESH_MINUTES)
                 ): selector.NumberSelector(
                     selector.NumberSelectorConfig(min=1, max=120, step=1, unit_of_measurement="min", mode=selector.NumberSelectorMode.BOX)
-                ),
-                vol.Required(
-                    CONF_OPEN_SECONDS, default=entry.options.get(CONF_OPEN_SECONDS, DEFAULT_OPEN_SECONDS)
-                ): selector.NumberSelector(
-                    selector.NumberSelectorConfig(min=1, max=120, step=1, unit_of_measurement="s", mode=selector.NumberSelectorMode.BOX)
                 ),
                 # Real-time messages cost Message Service credits, so off by default.
                 vol.Required(CONF_PUSH, default=entry.options.get(CONF_PUSH, False)): selector.BooleanSelector(),

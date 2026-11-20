@@ -367,6 +367,14 @@ class TuyaLockApi:
                         " battery locks also have to be awake (press a key on the keypad first)")
             raise TuyaLockError(msg, last.code)
 
+    def lock(self, device_id: str) -> None:
+        """Ask the lock to lock now (the standard `manual_lock` instruction).
+
+        Not every lock has it; the ones that do relock their bolt when it is
+        sent. Tuya answers "sent" as soon as the cloud accepts the command.
+        """
+        self._post(f"/v1.0/devices/{device_id}/commands", {"commands": [{"code": "manual_lock", "value": True}]}, "lock the door")
+
     # ------------------------------------------------------- temporary codes
 
     def list_codes(self, device_id: str) -> list[dict[str, Any]]:

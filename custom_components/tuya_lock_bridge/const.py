@@ -11,15 +11,11 @@ CONF_REFRESH_MINUTES = "refresh_minutes"
 CONF_PUSH = "push"
 CONF_PUSH_ENV = "push_env"
 CONF_SUBSCRIPTION_END = "subscription_end"
-CONF_OPEN_SECONDS = "open_seconds"
 
 PUSH_ENV_PRODUCTION = "production"
 PUSH_ENV_TEST = "test"
 
 DEFAULT_REFRESH_MINUTES = 5
-# How long the lock entity shows "open" after an unlock. Many locks relock on
-# their own after a few seconds; this should match the lock's auto-lock time.
-DEFAULT_OPEN_SECONDS = 5
 
 ENDPOINTS = {
     "https://openapi.tuyaeu.com": "Central Europe",
