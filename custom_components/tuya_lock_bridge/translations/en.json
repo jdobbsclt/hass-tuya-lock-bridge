@@ -36,14 +36,14 @@
         "data": {
           "locks": "Locks",
           "refresh_minutes": "Refresh every (minutes)",
-          "open_seconds": "Show \"open\" for (seconds)",
+          "open_seconds": "Lock card shows \"open\" for (seconds)",
           "push": "Real-time messages (push)",
           "push_env": "Message Service environment",
           "subscription_end": "Cloud plan end date"
         },
         "data_description": {
           "refresh_minutes": "Every refresh is a handful of calls per lock against your Tuya project's monthly allowance.",
-          "open_seconds": "How long the lock card shows \"open\" after an unlock. Set it to your lock's auto-lock time.",
+          "open_seconds": "Display only: how long the lock card in Home Assistant shows \"open\" after an unlock. It does NOT change when the lock actually relocks, which is set by the lock itself (its firmware or its own app settings). Match it to your lock's auto-lock time.",
           "push": "Listen to Tuya's Message Service so unlocks show within seconds and the doorbell and alarm events work. Uses Message Service credits; the service must be enabled in the Tuya console.",
           "push_env": "Must match the environment the Message Service is set to in the Tuya console. The wrong one is refused with HTTP 500.",
           "subscription_end": "When your IoT Core plan expires (see Cloud → My Services). A repair warning appears a month ahead."

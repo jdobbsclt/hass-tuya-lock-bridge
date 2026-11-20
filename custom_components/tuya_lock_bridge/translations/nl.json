@@ -36,14 +36,14 @@
         "data": {
           "locks": "Sloten",
           "refresh_minutes": "Verversen elke (minuten)",
-          "open_seconds": "Toon \"open\" gedurende (seconden)",
+          "open_seconds": "Slotkaart toont \"open\" gedurende (seconden)",
           "push": "Realtime berichten (push)",
           "push_env": "Omgeving van de Message Service",
           "subscription_end": "Einddatum cloudabonnement"
         },
         "data_description": {
           "refresh_minutes": "Elke verversing is een handvol aanroepen per slot op het maandbudget van je Tuya-project.",
-          "open_seconds": "Hoe lang de slotkaart \"open\" toont na het openen. Stel in op de automatische vergrendeltijd van je slot.",
+          "open_seconds": "Alleen weergave: hoe lang de slotkaart in Home Assistant \"open\" toont na het openen. Dit verandert NIET wanneer het slot echt weer vergrendelt; dat bepaalt het slot zelf (firmware of eigen app-instellingen). Stel in op de automatische vergrendeltijd van je slot.",
           "push": "Luistert naar Tuya's Message Service, zodat ontgrendelingen binnen seconden zichtbaar zijn en de deurbel- en alarmgebeurtenissen werken. Kost Message Service-credits; de dienst moet in de Tuya-console aanstaan.",
           "push_env": "Moet gelijk zijn aan de omgeving waarop de Message Service in de Tuya-console staat. De verkeerde wordt geweigerd met HTTP 500.",
           "subscription_end": "Wanneer je IoT Core-abonnement verloopt (zie Cloud → My Services). Een maand vooraf verschijnt een reparatiemelding."
