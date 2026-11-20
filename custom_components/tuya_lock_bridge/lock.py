@@ -17,10 +17,8 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_call_later
 
 from .api import TuyaLockError
-from .const import DOMAIN
+from .const import CONF_OPEN_SECONDS, DEFAULT_OPEN_SECONDS, DOMAIN
 from .entity import TuyaLockEntity
-
-OPEN_SECONDS = 5
 
 
 async def async_setup_entry(hass: HomeAssistant, entry, async_add_entities: AddEntitiesCallback) -> None:
@@ -63,7 +61,8 @@ class DoorLock(TuyaLockEntity, LockEntity):
         await self.coordinator.async_record(self._context, "unlock", self.device.device_id)
         if self._cancel_reset is not None:
             self._cancel_reset()
-        self._cancel_reset = async_call_later(self.hass, OPEN_SECONDS, self._reset)
+        seconds = self.coordinator.entry.options.get(CONF_OPEN_SECONDS, DEFAULT_OPEN_SECONDS)
+        self._cancel_reset = async_call_later(self.hass, seconds, self._reset)
 
     async def _reset(self, _now) -> None:
         self._cancel_reset = None

@@ -310,6 +310,15 @@ class TuyaLockApi:
             for d in (result or {}).get("devices", [])
         ]
 
+    def device_status(self, device_id: str) -> dict[str, Any]:
+        """The lock's own status points, e.g. {"residual_electricity": 87}.
+
+        One call. Which codes exist differs per model; a lock that reports
+        none gives an empty dict.
+        """
+        result = self._get(f"/v1.0/devices/{device_id}/status", what="read the lock status") or []
+        return {item["code"]: item.get("value") for item in result if isinstance(item, dict) and "code" in item}
+
     # ---------------------------------------------------------------- unlock
 
     # The three ways Tuya documents for opening a door without a password,
